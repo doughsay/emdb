@@ -2,7 +2,13 @@ defmodule Emdb.Actors.Actor do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Emdb.Actors.Role
+  alias Emdb.Movies.Movie
+
   schema "actors" do
+    has_many :roles, Role
+    many_to_many :movies, Movie, join_through: Role
+
     field :name, :string
 
     timestamps()
