@@ -1,13 +1,7 @@
 defmodule EmdbWeb.Schema do
   use Absinthe.Schema
 
-  alias Emdb.Movies
-
-  @desc "A cool 80's movie"
-  object :movie do
-    field :title, non_null(:string)
-    field :year, non_null(:integer)
-  end
+  import_types EmdbWeb.Schema.MovieTypes
 
   query do
     @desc "Check that the server is running"
@@ -15,11 +9,14 @@ defmodule EmdbWeb.Schema do
       resolve fn _, _ -> {:ok, "alive!"} end
     end
 
-    @desc "List all 80's movies"
-    field :movies, non_null(list_of(non_null(:movie))) do
-      resolve fn _, _ ->
-        {:ok, Movies.list_movies()}
-      end
-    end
+    import_fields :movie_queries
   end
+
+  # mutation do
+  #   # mutations go here
+  # end
+
+  # subscription do
+  #   # subscriptions go here
+  # end
 end
