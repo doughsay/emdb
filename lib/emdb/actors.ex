@@ -102,6 +102,16 @@ defmodule Emdb.Actors do
     Actor.changeset(actor, %{})
   end
 
+  alias Emdb.Movies
+
+  @doc """
+  Gets all actors for a given movie id.
+  """
+  def get_actors_for_movie(movie_id) do
+    movie = movie_id |> Movies.get_movie!() |> Repo.preload(:actors)
+    movie.actors
+  end
+
   alias Emdb.Actors.Role
 
   @doc """
