@@ -101,4 +101,22 @@ defmodule Emdb.Movies do
   def change_movie(%Movie{} = movie) do
     Movie.changeset(movie, %{})
   end
+
+  @doc """
+  Gets all movies for a given director id.
+  """
+  def get_movies_for_director(director_id) do
+    from(m in Movie, where: m.director_id == ^director_id)
+    |> Repo.all()
+  end
+
+  alias Emdb.Actors
+
+  @doc """
+  Gets all movies for a given actor id.
+  """
+  def get_movies_for_actor(actor_id) do
+    actor = actor_id |> Actors.get_actor!() |> Repo.preload(:movies)
+    actor.movies
+  end
 end
