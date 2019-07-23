@@ -1,8 +1,8 @@
 defmodule EmdbWeb.Resolvers.MoviesResolver do
   alias Emdb.Movies
 
-  def movies(_, _, _) do
-    {:ok, Movies.list_movies()}
+  def movies(_, %{search_term: search_term}, _) do
+    {:ok, Movies.search_movies(search_term)}
   end
 
   def movies_for_director(%{id: director_id}, _, _) do

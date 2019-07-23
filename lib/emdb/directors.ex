@@ -22,6 +22,16 @@ defmodule Emdb.Directors do
   end
 
   @doc """
+  Search for directors by a given search term.
+  """
+  def search_directors(search_term) do
+    search_term = "%#{search_term}%"
+
+    from(d in Director, where: ilike(d.name, ^search_term))
+    |> Repo.all()
+  end
+
+  @doc """
   Gets a single director.
 
   Raises `Ecto.NoResultsError` if the Director does not exist.

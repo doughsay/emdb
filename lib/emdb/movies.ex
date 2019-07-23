@@ -22,6 +22,16 @@ defmodule Emdb.Movies do
   end
 
   @doc """
+  Search for movies by a given search term.
+  """
+  def search_movies(search_term) do
+    search_term = "%#{search_term}%"
+
+    from(m in Movie, where: ilike(m.title, ^search_term))
+    |> Repo.all()
+  end
+
+  @doc """
   Gets a single movie.
 
   Raises `Ecto.NoResultsError` if the Movie does not exist.

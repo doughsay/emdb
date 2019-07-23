@@ -22,6 +22,16 @@ defmodule Emdb.Actors do
   end
 
   @doc """
+  Search for actors by a given search term.
+  """
+  def search_actors(search_term) do
+    search_term = "%#{search_term}%"
+
+    from(a in Actor, where: ilike(a.name, ^search_term))
+    |> Repo.all()
+  end
+
+  @doc """
   Gets a single actor.
 
   Raises `Ecto.NoResultsError` if the Actor does not exist.

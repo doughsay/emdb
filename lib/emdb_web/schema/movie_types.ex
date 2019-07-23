@@ -3,9 +3,6 @@ defmodule EmdbWeb.Schema.MovieTypes do
 
   alias EmdbWeb.Resolvers.{MoviesResolver, DirectorsResolver, ActorsResolver}
 
-  import_types EmdbWeb.Schema.DirectorTypes
-  import_types EmdbWeb.Schema.ActorTypes
-
   @desc "A cool 80's movie"
   object :movie do
     field :title, non_null(:string)
@@ -17,7 +14,10 @@ defmodule EmdbWeb.Schema.MovieTypes do
   end
 
   object :movie_queries do
-    @desc "List all 80's movies"
-    field :movies, non_null(list_of(non_null(:movie))), resolve: &MoviesResolver.movies/3
+    @desc "Search 80's movies by title"
+    field :movies, non_null(list_of(non_null(:movie))) do
+      arg :search_term, non_null(:string)
+      resolve &MoviesResolver.movies/3
+    end
   end
 end
