@@ -13,7 +13,7 @@ defmodule EmdbWeb.Schema.ActorTypes do
 
   object :actor_queries do
     @desc "Search 80's actors by name"
-    field :actors, non_null(list_of(non_null(:director))) do
+    field :actors, non_null(list_of(non_null(:actor))) do
       arg :search_term, non_null(:string)
       resolve &ActorsResolver.actors/3
     end
