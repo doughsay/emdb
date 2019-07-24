@@ -1,5 +1,6 @@
 defmodule EmdbWeb.Schema do
   use Absinthe.Schema
+  use ApolloTracing
 
   import_types EmdbWeb.Schema.DirectorTypes
   import_types EmdbWeb.Schema.ActorTypes

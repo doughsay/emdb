@@ -3,5 +3,6 @@ defmodule EmdbWeb.Router do
 
   forward "/api", Absinthe.Plug.GraphiQL,
     schema: EmdbWeb.Schema,
-    interface: :playground
+    interface: :playground,
+    pipeline: {ApolloTracing.Pipeline, :plug}
 end
