@@ -1,19 +1,15 @@
-# Emdb
+# The Eighties Movie Database
 
-To start your Phoenix server:
+![the eighties movie database logo](logo.jpg)
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+A sample project demonstrating a GraphQL API using Elixir + Phoenix + Absinthe.
+
+See [The Playbook](playbook.md) for the script used in the presentation.
+
+To start the EMDB Phoenix server:
+
+* Install dependencies with `mix deps.get`
+* Create and migrate your database with `mix ecto.setup`
+* Start Phoenix endpoint with `mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix

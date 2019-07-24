@@ -33,6 +33,7 @@ defmodule Emdb.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:csv, "~> 2.3"},
       {:apollo_tracing, "~> 0.4"},
       {:absinthe, "~> 1.4"},
       {:absinthe_plug, "~> 1.4"},
